@@ -1,0 +1,208 @@
+{
+	"info": {
+		"_postman_id": "2591bc14-9de9-46b6-9660-8b520709c652",
+		"name": "myvariables",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "29960974",
+		"_collection_link": "https://www.postman.com/shubhangikalbande/workspace/myworkspace/collection/29960974-2591bc14-9de9-46b6-9660-8b520709c652?action=share&source=collection_link&creator=29960974"
+	},
+	"item": [
+		{
+			"name": "New Request",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							"//Create  local variable\r",
+							"\r",
+							"pm.variables.set(\"url_local\",\"https://reqres.in\")\r",
+							"\r",
+							"//To create global variable using preresquest script\r",
+							"pm.globals.set(\"userid_global\",\"2\");\r",
+							"\r",
+							"//To create envirnonment variable\r",
+							"pm.environment.set(\"userid_qa_env\",\"2\")\r",
+							"pm.environment.set(\"userid_dev_env\",\"2\")\r",
+							"\r",
+							"//To create collection variable\r",
+							"pm.collectionVariables.set(\"userid_collect\",\"2\")"
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"// variables\r",
+							"/*\r",
+							"1.Global -accessible in workspace\r",
+							"2.Collection-accessible  within collection\r",
+							"3.Environment- accessible in all collection but we have to chnage the environment\r",
+							"\r",
+							"4.local- all local variables must be created in pre request script.Accessible within  that particular request only.\r",
+							"\r",
+							"1.url_global\r",
+							"2.url_collect\r",
+							"3.url_qa_envir ,url_dev_envir\r",
+							"4.url_local\r",
+							"\r",
+							"\r",
+							"To delete global variable using preresquest script\r",
+							"pm.globals.unset(\"userid_global\");\r",
+							"\r",
+							"To delete envirnonment variable\r",
+							"pm.environment.unset(\"userid_qa_env\")\r",
+							"pm.environment.unset(\"userid_dev_env\")\r",
+							"\r",
+							"To delete collection variable\r",
+							"pm.collectionVariables.unset(\"userid_collect\")\r",
+							"\r",
+							"*/\r",
+							"\r",
+							"//to print value in console\r",
+							"console.log(pm.globals.get(\"userid_global\"))\r",
+							"console.log(pm.environment.get(\"userid_collect\"))\r",
+							"console.log(pm.collectionVariables.get(\"userid_qa_env\"))\r",
+							"console.log(pm.variables.get(\"url_local\"))"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{url_local}}/api/users?page={{userid_collect}}",
+					"host": [
+						"{{url_local}}"
+					],
+					"path": [
+						"api",
+						"users"
+					],
+					"query": [
+						{
+							"key": "page",
+							"value": "{{userid_collect}}"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Post request",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							"pm.variables.set(\"url_local\",\"https://reqres.in\")"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "{{url_local}}/api/users?page=2",
+					"host": [
+						"{{url_local}}"
+					],
+					"path": [
+						"api",
+						"users"
+					],
+					"query": [
+						{
+							"key": "page",
+							"value": "2"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Put Request",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n            \"id\": 77,\r\n            \"email\": \"michael.lawson@reqres.in\",\r\n            \"first_name\": \"Michael\",\r\n            \"last_name\": \"Lawson\",\r\n            \"avatar\": \"https://reqres.in/img/faces/7-image.jpg\"\r\n        }",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url_global}}/api/7",
+					"host": [
+						"{{url_global}}"
+					],
+					"path": [
+						"api",
+						"7"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "delete request",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "{{url_global}}/api/7",
+					"host": [
+						"{{url_global}}"
+					],
+					"path": [
+						"api",
+						"7"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "url_collect",
+			"value": "https://reqres.in",
+			"type": "string"
+		},
+		{
+			"key": "userid_collect",
+			"value": ""
+		}
+	]
+}
