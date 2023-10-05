@@ -1,0 +1,170 @@
+{
+	"info": {
+		"_postman_id": "3a8be0fc-84ba-4ce1-98a7-d777a82d031b",
+		"name": "Books api Data driven",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "29960974",
+		"_collection_link": "https://www.postman.com/shubhangikalbande/workspace/myworkspace/collection/29960974-3a8be0fc-84ba-4ce1-98a7-d777a82d031b?action=share&source=collection_link&creator=29960974"
+	},
+	"item": [
+		{
+			"name": "submit order",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"to verify status code\",()=>{\r",
+							"\r",
+							"    pm.response.to.have.status(201);\r",
+							"})\r",
+							"\r",
+							"var jsonData=JSON.parse(responseBody);\r",
+							"\r",
+							"pm.environment.set(\"id_env\",jsonData.orderId)\r",
+							"console.log(\"Order ID from Environment:\", pm.environment.get(\"id_env\"));"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "cb91d801db2b474a9fa96a7c84fa38720e4f0a5ff7616dedb1efb28c8c0a181e",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"bookId\":\"{{Book_id}}\",\r\n    \"customerName\":\"{{Cust_name}}\"\r\n\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://simple-books-api.glitch.me/orders",
+					"protocol": "https",
+					"host": [
+						"simple-books-api",
+						"glitch",
+						"me"
+					],
+					"path": [
+						"orders"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "to get  order",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"validate status code\",()=>{\r",
+							"\r",
+							"    pm.response.to.have.status(200);\r",
+							"})\r",
+							"\r",
+							"pm.test(\"validating the value of field\",()=>{\r",
+							"\r",
+							" var jsonData = pm.response.json();\r",
+							"console.log(\"Parsed JSON:\", jsonData);\r",
+							"   \r",
+							"    pm.expect(jsonData.orderId).to.eql(pm.environment.get(\"id_env\"))\r",
+							"\r",
+							"})"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "cb91d801db2b474a9fa96a7c84fa38720e4f0a5ff7616dedb1efb28c8c0a181e",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://simple-books-api.glitch.me/orders/{{id_env}}",
+					"protocol": "https",
+					"host": [
+						"simple-books-api",
+						"glitch",
+						"me"
+					],
+					"path": [
+						"orders",
+						"{{id_env}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "delete order",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"validating status code\",()=>{\r",
+							"\r",
+							"    pm.response.to.have.status(204);\r",
+							"})\r",
+							"\r",
+							"pm.environment.unset(\"id_env\")"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "cb91d801db2b474a9fa96a7c84fa38720e4f0a5ff7616dedb1efb28c8c0a181e",
+							"type": "string"
+						}
+					]
+				},
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "https://simple-books-api.glitch.me/orders/{{id_env}}",
+					"protocol": "https",
+					"host": [
+						"simple-books-api",
+						"glitch",
+						"me"
+					],
+					"path": [
+						"orders",
+						"{{id_env}}"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
