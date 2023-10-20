@@ -1,0 +1,146 @@
+{
+	"id": "a8b002fe-84e6-4c6c-ac2f-2b8502fe4803",
+	"name": "swagger Api",
+	"timestamp": "2023-10-16T10:56:12.085Z",
+	"collection_id": "29960974-09a1f588-3d4e-4489-81a3-37249ccc8536",
+	"folder_id": 0,
+	"environment_id": "29960974-f97d838d-4df5-4ebc-b0e1-7a5305be21d3",
+	"totalPass": 4,
+	"delay": 0,
+	"persist": true,
+	"status": "finished",
+	"startedAt": "2023-10-16T10:56:08.550Z",
+	"totalFail": 0,
+	"results": [
+		{
+			"id": "33c800ee-6d03-4854-a4a5-45e9543a73cc",
+			"name": "https://petstore.swagger.io/v2/user",
+			"url": "https://petstore.swagger.io/v2/user",
+			"time": 1237,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"to validate the response code": true
+			},
+			"testPassFailCounts": {
+				"to validate the response code": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				1237
+			],
+			"allTests": [
+				{
+					"to validate the response code": true
+				}
+			]
+		},
+		{
+			"id": "9ef2b61c-31ff-4f4a-a33c-91b132f29df3",
+			"name": "get user by name",
+			"url": "https://petstore.swagger.io/v2/user/Johnhatelkk31dj",
+			"time": 257,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"to validate the response code": true
+			},
+			"testPassFailCounts": {
+				"to validate the response code": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				257
+			],
+			"allTests": [
+				{
+					"to validate the response code": true
+				}
+			]
+		},
+		{
+			"id": "4548d563-1653-4da6-94ce-b7417345b2fb",
+			"name": "update the user details",
+			"url": "https://petstore.swagger.io/v2/user/Johnhatelkk31dj",
+			"time": 254,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"to validate the response code": true
+			},
+			"testPassFailCounts": {
+				"to validate the response code": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				254
+			],
+			"allTests": [
+				{
+					"to validate the response code": true
+				}
+			]
+		},
+		{
+			"id": "50084a29-4496-4c7f-8372-10e0def11358",
+			"name": "delete user",
+			"url": "https://petstore.swagger.io/v2/user/Johnhatelkk31dj",
+			"time": 252,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"to validate the response code": true
+			},
+			"testPassFailCounts": {
+				"to validate the response code": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				252
+			],
+			"allTests": [
+				{
+					"to validate the response code": true
+				}
+			]
+		}
+	],
+	"count": 1,
+	"totalTime": 2000,
+	"collection": {
+		"requests": [
+			{
+				"id": "33c800ee-6d03-4854-a4a5-45e9543a73cc",
+				"method": "POST"
+			},
+			{
+				"id": "9ef2b61c-31ff-4f4a-a33c-91b132f29df3",
+				"method": "GET"
+			},
+			{
+				"id": "4548d563-1653-4da6-94ce-b7417345b2fb",
+				"method": "PUT"
+			},
+			{
+				"id": "50084a29-4496-4c7f-8372-10e0def11358",
+				"method": "DELETE"
+			}
+		]
+	}
+}

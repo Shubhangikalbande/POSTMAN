@@ -1,0 +1,76 @@
+{
+	"info": {
+		"_postman_id": "2610b1d2-d036-4743-b6d3-35d7ea7375fd",
+		"name": "o auth 2 authentication",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "29960974",
+		"_collection_link": "https://www.postman.com/shubhangikalbande/workspace/myworkspace/collection/29960974-2610b1d2-d036-4743-b6d3-35d7ea7375fd?action=share&source=collection_link&creator=29960974"
+	},
+	"item": [
+		{
+			"name": "oauth 2",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://github.com/login/oauth/authorize?client_id=d829c5ec71a5688fac73",
+					"protocol": "https",
+					"host": [
+						"github",
+						"com"
+					],
+					"path": [
+						"login",
+						"oauth",
+						"authorize"
+					],
+					"query": [
+						{
+							"key": "client_id",
+							"value": "d829c5ec71a5688fac73"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "to get access token",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "http://github.com/login/oauth/authorize?client_id=d829c5ec71a5688fac73&client_secret=abe53804a8b56a490812d4edadd8aaee0b0307d6&code=10cdba8ac57285dde131",
+					"protocol": "http",
+					"host": [
+						"github",
+						"com"
+					],
+					"path": [
+						"login",
+						"oauth",
+						"authorize"
+					],
+					"query": [
+						{
+							"key": "client_id",
+							"value": "d829c5ec71a5688fac73"
+						},
+						{
+							"key": "client_secret",
+							"value": "abe53804a8b56a490812d4edadd8aaee0b0307d6"
+						},
+						{
+							"key": "code",
+							"value": "10cdba8ac57285dde131"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

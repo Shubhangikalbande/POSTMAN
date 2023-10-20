@@ -1,0 +1,203 @@
+{
+	"info": {
+		"_postman_id": "5726e794-ef00-412d-bae0-bfe51914f3d5",
+		"name": "Swagger Api_xml format",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "29960974",
+		"_collection_link": "https://www.postman.com/shubhangikalbande/workspace/myworkspace/collection/29960974-5726e794-ef00-412d-bae0-bfe51914f3d5?action=share&source=collection_link&creator=29960974"
+	},
+	"item": [
+		{
+			"name": "get new pet",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"validat eresponse code\",()=>{\r",
+							"\r",
+							"\r",
+							"    pm.response.to.have.status(200)\r",
+							"})\r",
+							"\r",
+							"pm.test(\"validate name of pet\",()=>{\r",
+							"\r",
+							"    var jsonData= xml2Json(responseBody);//to convert xml to json\r",
+							"    pm.expect(jsonData.Pet.name).to.eq(\"doggie\")\r",
+							"})\r",
+							"\r",
+							"// to capure id as collcetion variable\r",
+							"\r",
+							"var jsonData=xml2Json(responseBody)\r",
+							"pm.collectionVariables.set(\"pet_id\",jsonData.Pet.id)"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "accept",
+						"value": "application/xml"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/xml"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<Pet>\r\n\t<id>{{pet_id}}</id>\r\n\t<Category>\r\n\t\t<id>0</id>\r\n\t\t<name>string</name>\r\n\t</Category>\r\n\t<name>doggie</name>\r\n\t<photoUrls>\r\n\t\t<photoUrl>string</photoUrl>\r\n\t</photoUrls>\r\n\t<tags>\r\n\t\t<Tag>\r\n\t\t\t<id>0</id>\r\n\t\t\t<name>string</name>\r\n\t\t</Tag>\r\n\t</tags>\r\n\t<status>available</status>\r\n</Pet>"
+				},
+				"url": {
+					"raw": "https://petstore.swagger.io/v2/pet",
+					"protocol": "https",
+					"host": [
+						"petstore",
+						"swagger",
+						"io"
+					],
+					"path": [
+						"v2",
+						"pet"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "find pet my id",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"validat eresponse code\",()=>{\r",
+							"\r",
+							"\r",
+							"    pm.response.to.have.status(200)\r",
+							"})\r",
+							"\r",
+							"var jsonData = xml2Json(responseBody)//to convert xml to json\r",
+							"pm.expect(jsonData.Pet.id).to.eq(pm.collectionVariables.get(\"pet_id\"))"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://petstore.swagger.io/v2/pet/{{pet_id}}",
+					"protocol": "https",
+					"host": [
+						"petstore",
+						"swagger",
+						"io"
+					],
+					"path": [
+						"v2",
+						"pet",
+						"{{pet_id}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "update name of pet",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"validat eresponse code\",()=>{\r",
+							"\r",
+							"\r",
+							"    pm.response.to.have.status(200)\r",
+							"})\r",
+							"\r",
+							"pm.test(\"to validate the updated name\",()=>{\r",
+							"\r",
+							"var jsonData=xml2Json(responseBody)\r",
+							"\r",
+							"    pm.expect(jsonData.Pet.name).to.eq(\"oscar\")\r",
+							"})"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<Pet>\r\n\t<id>{{pet_id}}</id>\r\n\t<Category>\r\n\t\t<id>0</id>\r\n\t\t<name>string</name>\r\n\t</Category>\r\n\t<name>oscar</name>\r\n\t<photoUrls>\r\n\t\t<photoUrl>string</photoUrl>\r\n\t</photoUrls>\r\n\t<tags>\r\n\t\t<Tag>\r\n\t\t\t<id>0</id>\r\n\t\t\t<name>string</name>\r\n\t\t</Tag>\r\n\t</tags>\r\n\t<status>available</status>\r\n</Pet>",
+					"options": {
+						"raw": {
+							"language": "xml"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://petstore.swagger.io/v2/pet/{{pet_id}}",
+					"protocol": "https",
+					"host": [
+						"petstore",
+						"swagger",
+						"io"
+					],
+					"path": [
+						"v2",
+						"pet",
+						"{{pet_id}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "delete pet",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.collectionVariables.unset(\"pet_id\")"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "https://petstore.swagger.io/v2/pet/{{pet_id}}",
+					"protocol": "https",
+					"host": [
+						"petstore",
+						"swagger",
+						"io"
+					],
+					"path": [
+						"v2",
+						"pet",
+						"{{pet_id}}"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"variable": [
+		{
+			"key": "pet_id",
+			"value": ""
+		}
+	]
+}
